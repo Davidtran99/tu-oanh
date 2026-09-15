@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function copyPublicUrl() {
-    const url = 'https://solutions-nor-above-cam.trycloudflare.com';
+    const url = 'https://temporary-brisk-crater-ale5lxo.vercel.app';
     navigator.clipboard.writeText(url).then(() => {
       playHeartChime();
       showToast('📋 Đã sao chép link công khai cho bé Tú Oanh!');
