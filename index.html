@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gửi Em Bé Tú Oanh · Mau Khỏe Nhé Yêu Dấu 🌸</title>
+  <meta name="description" content="Trang web yêu thương đặc biệt gửi tặng em bé Tú Oanh. Chúc em thật mau khỏe, hết đau bụng và luôn rạng rỡ nụ cười!">
+  
+  <!-- Google Fonts: Quicksand & Dancing Script & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Canvas Background for Floating Hearts & Sparkles -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- Top Navigation & Actions Bar -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-heart">💖</span>
+        <span class="logo-text">Tú Oanh &amp; Anh</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#heroSection">Trang Đầu</a>
+        <a href="#prescriptionSection">Đơn Thuốc Yêu</a>
+        <a href="#hugSection">Ôm &amp; Xoa Bụng</a>
+        <a href="#teaSection">Góc Trà Ấm</a>
+        <a href="#voucherSection">Voucher VIP</a>
+        <a href="#letterSection">Tâm Thư</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="musicToggleBtn" class="btn-icon" title="Bật/Tắt âm thanh vỗ về êm dịu" aria-label="Bật/Tắt âm thanh êm dịu">
+          <span id="musicIcon">🎵</span>
+          <span class="btn-text">Giai Điệu Ấm</span>
+        </button>
+        <button id="qrNavBtn" class="btn-icon btn-qr-nav" title="Xem mã QR để mở trên điện thoại">
+          <span>📱</span>
+          <span class="btn-text">Mã QR</span>
+        </button>
+        <button id="printBtn" class="btn-primary btn-print" title="In hoặc lưu PDF món quà tặng Tú Oanh">
+          <span>🖨️</span>
+          <span>In Quà Tặng (PDF)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="heroSection">
+      <div class="hero-container">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Món quà bí mật gửi tặng em bé Tú Oanh iu dấu</span>
+        </div>
+
+        <h1 class="hero-title">
+          Mau Khỏe Nhé, <br>
+          <span class="highlight-name">Bé Tú Oanh Của Anh!</span> 🌸
+        </h1>
+
+        <p class="hero-subtitle">
+          Biết tin em bé bị đau bụng, anh thương lắm lắm luôn. Trang web nhỏ này mang theo hơi ấm của túi chườm, 
+          hương thơm của tách trà gừng mật ong và ngàn cái ôm gửi thẳng tới em!
+        </p>
+
+        <!-- Public Link & QR Pill -->
+        <div class="hero-public-box">
+          <button id="heroQrBtn" class="btn-qr-hero">
+            <span>📱</span>
+            <span>Mở Trên Điện Thoại (Quét Mã QR)</span>
+          </button>
+          <div class="public-url-pill" id="publicUrlPill" title="Bấm để sao chép liên kết">
+            <span>🌐</span>
+            <span class="url-display">solutions-nor-above-cam.trycloudflare.com</span>
+            <span class="url-copy-badge" id="heroCopyBadge">Sao chép</span>
+          </div>
+        </div>
+
+        <!-- Live Recovery Health Meter -->
+        <div class="wellness-card glass-panel" id="wellnessCard">
+          <div class="wellness-header">
+            <div class="wellness-title-wrap">
+              <span class="wellness-icon">🩺</span>
+              <div>
+                <h2 class="wellness-heading">Chỉ Số Hồi Phục Của Tú Oanh</h2>
+                <p class="wellness-desc" id="wellnessStatusText">Đang mệt xíu xiu, cần được anh xoa bụng và truyền năng lượng!</p>
+              </div>
+            </div>
+            <span class="wellness-percentage" id="wellnessPercent">65%</span>
+          </div>
+
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 65%;">
+              <span class="progress-shine"></span>
+            </div>
+          </div>
+
+          <div class="wellness-actions-grid">
+            <button class="health-action-btn" id="actionTeaBtn">
+              <span>🍵</span>
+              <span>Uống 1 ngụm trà ấm (+10%)</span>
+            </button>
+            <button class="health-action-btn" id="actionHeatBtn">
+              <span>🧸</span>
+              <span>Chườm ấm bụng (+10%)</span>
+            </button>
+            <button class="health-action-btn" id="actionHugBtn">
+              <span>🫂</span>
+              <span>Nhận cái ôm từ anh (+15%)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Image Frame -->
+        <div class="hero-image-wrapper">
+          <div class="image-frame-glow"></div>
+          <img src="assets/hero.jpg" alt="Em bé Tú Oanh ngoan ngoãn nghỉ ngơi dưới chăn ấm" class="hero-art-img" id="heroArtImg">
+          <div class="hero-floating-badge badge-left">
+            <span class="badge-icon">🧸</span>
+            <div>
+              <strong>Gấu bông túc trực</strong>
+              <small>Canh giấc ngủ êm đềm</small>
+            </div>
+          </div>
+          <div class="hero-floating-badge badge-right">
+            <span class="badge-icon">☕</span>
+            <div>
+              <strong>Trà hoa cúc mật ong</strong>
+              <small>Xoa dịu mọi cơn đau</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ĐƠN THUỐC TÌNH YÊU (LOVE PRESCRIPTION) -->
+    <section class="section prescription-section" id="prescriptionSection">
+      <div class="section-header">
+        <span class="section-tag">ĐỘC QUYỀN TỪ ANH</span>
+        <h2 class="section-title">Đơn Thuốc "Hết Đau Bụng Ngay" 💊</h2>
+        <p class="section-subtitle">Thuốc đặc trị không có vị đắng, chỉ toàn vị ngọt ngào và sự nâng niu dành cho Tú Oanh</p>
+      </div>
+
+      <div class="prescription-grid">
+        <!-- Pill 1 -->
+        <article class="rx-card glass-panel" id="rx1">
+          <div class="rx-top">
+            <span class="rx-badge">Liều Số 01</span>
+            <span class="rx-icon">🫖</span>
+          </div>
+          <h3 class="rx-name">Trà Gừng Mật Ong 39°C</h3>
+          <p class="rx-meta">Uống từng ngụm nhỏ khi ấm · Giảm co thắt dạ dày</p>
+          <p class="rx-desc">
+            Vị cay ấm dịu của gừng tươi hòa cùng mật ong rừng vàng óng. Vừa làm ấm từ bên trong, vừa xua tan cảm giác cồn cào khó chịu.
+          </p>
+          <div class="rx-footer">
+            <span class="rx-freq">🕒 2-3 lần/ngày</span>
+            <button class="rx-action-btn" id="rxBrewBtn">Rót Tách Trà 🍵</button>
+          </div>
+        </article>
+
+        <!-- Pill 2 -->
+        <article class="rx-card glass-panel" id="rx2">
+          <div class="rx-top">
+            <span class="rx-badge">Liều Số 02</span>
+            <span class="rx-icon">🌸</span>
+          </div>
+          <h3 class="rx-name">Túi Chườm Ấm Gấu Bông</h3>
+          <p class="rx-meta">Áp nhẹ lên vùng bụng dưới · Nhiệt độ 38-40°C</p>
+          <p class="rx-desc">
+            Nhiệt ấm nhẹ nhàng giúp giãn các bó cơ đang co thắt. Em nằm nghiêng người một chút, ôm túi chườm vào bụng cho thật dễ chịu nha.
+          </p>
+          <div class="rx-footer">
+            <span class="rx-freq">🕒 Khi bụng nhói</span>
+            <button class="rx-action-btn" id="rxHeatBtn">Bật Chườm Ấm 🔥</button>
+          </div>
+        </article>
+
+        <!-- Pill 3 -->
+        <article class="rx-card glass-panel" id="rx3">
+          <div class="rx-top">
+            <span class="rx-badge">Liều Số 03</span>
+            <span class="rx-icon">🫂</span>
+          </div>
+          <h3 class="rx-name">1000 Cái Ôm &amp; Xoa Lưng</h3>
+          <p class="rx-meta">Liều lượng không giới hạn · Hiệu quả tức thì</p>
+          <p class="rx-desc">
+            Bàn tay ấm của anh xoa nhẹ quanh rốn theo chiều kim đồng hồ, vỗ về bờ lưng và hôn trán dỗ dành cho em bé bớt tủi thân.
+          </p>
+          <div class="rx-footer">
+            <span class="rx-freq">🕒 Vô hạn lần</span>
+            <button class="rx-action-btn" id="rxHugBtn">Nhận Ôm Liền 💖</button>
+          </div>
+        </article>
+
+        <!-- Pill 4 -->
+        <article class="rx-card glass-panel" id="rx4">
+          <div class="rx-top">
+            <span class="rx-badge">Liều Số 04</span>
+            <span class="rx-icon">🛌</span>
+          </div>
+          <h3 class="rx-name">Giấc Ngủ Ngon Không Lo Nghĩ</h3>
+          <p class="rx-meta">Tắt thông báo · Thư giãn tuyệt đối</p>
+          <p class="rx-desc">
+            Không cần cố gượng dậy làm việc hay lo toan gì cả. Việc quan trọng nhất lúc này của Tú Oanh là ngoan ngoãn ngủ một giấc thật sâu.
+          </p>
+          <div class="rx-footer">
+            <span class="rx-freq">🕒 Ngủ đủ 8 tiếng</span>
+            <button class="rx-action-btn" id="rxSleepBtn">Bật Nhạc Ngủ 🌙</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. TRẠM ÔM TỪ XA & XOA BỤNG ẢO (VIRTUAL HUG & HEALING STATION) -->
+    <section class="section hug-section" id="hugSection">
+      <div class="hug-layout glass-panel">
+        <div class="hug-visual">
+          <div class="hug-art-frame">
+            <img src="assets/hug.jpg" alt="Anh ôm và ủ ấm bụng cho em bé Tú Oanh" class="hug-art-img" id="hugArtImg">
+            <div class="heart-pulse-halo"></div>
+          </div>
+        </div>
+
+        <div class="hug-content">
+          <span class="section-tag">TRẠM TIẾP NĂNG LƯỢNG YÊU THƯƠNG</span>
+          <h2 class="hug-title">Xoa Bụng Từ Xa &amp; Gửi Triệu Cái Ôm</h2>
+          <p class="hug-description">
+            Khoảng cách không thể ngăn được tình thương của anh. Mỗi lần em nhấn nút, 
+            trái tim anh lại gửi một luồng hơi ấm thật mạnh mẽ đến xoa dịu chiếc bụng nhỏ của Tú Oanh!
+          </p>
+
+          <!-- Interactive Big Hug Button -->
+          <div class="hug-interactive-box">
+            <button id="bigHugBtn" class="btn-giant-hug">
+              <span class="hug-btn-glow"></span>
+              <span class="hug-btn-icon">💖</span>
+              <span class="hug-btn-text">BẤM VÀO ĐÂY ĐỂ ĐƯỢC ANH ÔM VÀ XOA BỤNG!</span>
+            </button>
+            <p class="hug-counter-text">
+              Đã gửi <strong id="hugCountNumber">1,024</strong> cái ôm ấm áp đến Tú Oanh hôm nay ✨
+            </p>
+          </div>
+
+          <!-- Dynamic Love Whispers Box -->
+          <div class="love-whisper-card" id="loveWhisperCard">
+            <div class="whisper-quote-mark">“</div>
+            <p class="whisper-text" id="whisperText">
+              "Anh thương bé Oanh nhiều lắm. Cơn đau bụng mau tan đi để em bé của anh lại mỉm cười rạng rỡ nha!"
+            </p>
+            <div class="whisper-author">
+              <span>— Người thương em nhất thế gian 💌</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GÓC TRÀ ẤM & BÍ KÍP XOA DỊU CƠN ĐAU (TEA & COZY CORNER) -->
+    <section class="section tea-section" id="teaSection">
+      <div class="section-header">
+        <span class="section-tag">GÓC ẤM ÁP CỦA TÚ OANH</span>
+        <h2 class="section-title">Bí Kíp Nhỏ Cho Chiếc Bụng Ngoan 🍯</h2>
+        <p class="section-subtitle">Những mẹo dịu dàng giúp em bé cảm thấy dễ chịu hơn từng phút</p>
+      </div>
+
+      <div class="tea-layout">
+        <div class="tea-card glass-panel">
+          <img src="assets/care.jpg" alt="Bàn trà gừng mật ong và túi chườm ấm dễ thương" class="tea-art-img">
+          
+          <div class="tea-interactive-bar">
+            <div class="tea-status">
+              <span class="tea-steam-anim">♨️</span>
+              <div>
+                <strong>Tách Trà Mật Ong Gừng Của Oanh</strong>
+                <small id="teaTempText">Nhiệt độ hiện tại: 40°C (Đang ấm dịu hoàn hảo)</small>
+              </div>
+            </div>
+            <button class="btn-secondary" id="pourMoreTeaBtn">
+              <span>🫖</span>
+              <span>Rót Thêm Trà Ấm</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="tips-accordion">
+          <div class="tip-item glass-panel active">
+            <div class="tip-icon">🛏️</div>
+            <div class="tip-body">
+              <h3>Tư thế nằm cuộn tròn như mèo con</h3>
+              <p>Em hãy nằm nghiêng sang bên trái, co nhẹ hai đầu gối về phía ngực. Tư thế này giúp giảm đáng kể áp lực lên thành bụng và các dây thần kinh.</p>
+            </div>
+          </div>
+
+          <div class="tip-item glass-panel">
+            <div class="tip-icon">🔄</div>
+            <div class="tip-body">
+              <h3>Xoa bụng nhẹ nhàng theo chiều kim đồng hồ</h3>
+              <p>Dùng lòng bàn tay ấm xoa chậm rãi theo vòng tròn quanh rốn. Động tác này kích thích nhu động ruột tự nhiên và làm dịu các cơn đau quặn.</p>
+            </div>
+          </div>
+
+          <div class="tip-item glass-panel">
+            <div class="tip-icon">🧦</div>
+            <div class="tip-body">
+              <h3>Luôn giữ ấm đôi bàn chân và cổ</h3>
+              <p>Nhớ mang đôi tất bông mềm mại nhé. Giữ ấm bàn chân sẽ giúp khí huyết lưu thông thông suốt, cơ thể không bị hàn lạnh làm đau bụng thêm.</p>
+            </div>
+          </div>
+
+          <div class="tip-item glass-panel">
+            <div class="tip-icon">🚫</div>
+            <div class="tip-body">
+              <h3>Tạm xa đồ chua, cay, lạnh và trà sữa</h3>
+              <p>Hôm nay chỉ uống nước ấm và ăn cháo hoặc súp loãng thanh đạm thôi nhen. Chờ bụng khỏi hẳn anh sẽ dắt em đi ăn món em thèm nhất!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PHIẾU CHĂM SÓC ĐẶC QUYỀN (VIP CARE VOUCHERS) -->
+    <section class="section voucher-section" id="voucherSection">
+      <div class="section-header">
+        <span class="section-tag">PHIẾU ĐẶC QUYỀN CÓ 1-0-2</span>
+        <h2 class="section-title">Voucher Chăm Sóc Dành Riêng Tú Oanh 🎟️</h2>
+        <p class="section-subtitle">Phiếu có giá trị trọn đời, không bao giờ hết hạn và được phục vụ tận tâm 100%</p>
+      </div>
+
+      <div class="voucher-grid">
+        <!-- Voucher 1 -->
+        <div class="voucher-card glass-panel" id="voucher1">
+          <div class="voucher-cutout-left"></div>
+          <div class="voucher-cutout-right"></div>
+          <div class="voucher-badge">VIP · SỨC KHỎE</div>
+          <div class="voucher-icon">🍲</div>
+          <h3 class="voucher-title">Đầu Bếp Riêng Bồi Bổ</h3>
+          <p class="voucher-desc">Anh sẽ tự tay nấu cháo sườn sen thơm lừng hoặc món súp nóng hổi bồi dưỡng ngay khi bụng em êm lại.</p>
+          <div class="voucher-code">CODE: <span>TUOANH-MAUKHOE-01</span></div>
+          <button class="btn-claim-voucher" data-title="Đầu Bếp Riêng Bồi Bổ">Sử Dụng Ngay ✨</button>
+        </div>
+
+        <!-- Voucher 2 -->
+        <div class="voucher-card glass-panel" id="voucher2">
+          <div class="voucher-cutout-left"></div>
+          <div class="voucher-cutout-right"></div>
+          <div class="voucher-badge">VIP · MASSAGE</div>
+          <div class="voucher-icon">💆‍♀️</div>
+          <h3 class="voucher-title">Massage &amp; Ru Ngủ 24/7</h3>
+          <p class="voucher-desc">Xoa lưng, bóp vai, massage trán và thì thầm kể những câu chuyện cổ tích êm đềm ru em ngủ say giấc.</p>
+          <div class="voucher-code">CODE: <span>TUOANH-NGUNGON-02</span></div>
+          <button class="btn-claim-voucher" data-title="Massage & Ru Ngủ 24/7">Sử Dụng Ngay ✨</button>
+        </div>
+
+        <!-- Voucher 3 -->
+        <div class="voucher-card glass-panel" id="voucher3">
+          <div class="voucher-cutout-left"></div>
+          <div class="voucher-cutout-right"></div>
+          <div class="voucher-badge">VIP · CHIỀU CHUỘNG</div>
+          <div class="voucher-icon">👑</div>
+          <h3 class="voucher-title">Một Ngày Làm Công Chúa</h3>
+          <p class="voucher-desc">Mọi việc nhà, giặt giũ, dọn dẹp anh gánh vác hết. Tú Oanh chỉ việc nghỉ ngơi và ra lệnh!</p>
+          <div class="voucher-code">CODE: <span>TUOANH-PRINCESS-03</span></div>
+          <button class="btn-claim-voucher" data-title="Một Ngày Làm Công Chúa">Sử Dụng Ngay ✨</button>
+        </div>
+
+        <!-- Voucher 4 -->
+        <div class="voucher-card glass-panel" id="voucher4">
+          <div class="voucher-cutout-left"></div>
+          <div class="voucher-cutout-right"></div>
+          <div class="voucher-badge">VIP · HẸN HÒ</div>
+          <div class="voucher-icon">🛵</div>
+          <h3 class="voucher-title">Buổi Hẹn Hò Gió Mát</h3>
+          <p class="voucher-desc">Khi khỏi hẳn, anh chở em bé đi dạo phố hóng gió, ngắm hoàng hôn và ăn tất cả những món em yêu thích.</p>
+          <div class="voucher-code">CODE: <span>TUOANH-DATAPHO-04</span></div>
+          <button class="btn-claim-voucher" data-title="Buổi Hẹn Hò Gió Mát">Sử Dụng Ngay ✨</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. BỨC THƯ TÌNH GỬI EM BÉ (LOVE LETTER) -->
+    <section class="section letter-section" id="letterSection">
+      <div class="letter-wrapper">
+        <div class="parchment-card">
+          <div class="letter-stamp">
+            <span>💌</span>
+            <small>Gửi Oanh</small>
+          </div>
+
+          <div class="letter-header">
+            <span class="letter-salutation">Gửi Em Bé Tú Oanh Của Anh,</span>
+          </div>
+
+          <div class="letter-body">
+            <p>
+              Nhìn thấy em bé của anh bị đau bụng, người mệt mỏi mà không được ở sát bên cạnh để xoa lưng cho em từng chút một, 
+              anh thấy xót xa và thương em nhiều vô cùng. 
+            </p>
+            <p>
+              Em lúc nào cũng đáng yêu, lúc khỏe thì líu lo như chú chim nhỏ làm anh vui suốt cả ngày. 
+              Nên lúc em mệt, ngôi nhà bỗng như trầm lại một chút. Em nhớ đừng cố làm việc hay suy nghĩ nhiều nha, 
+              cứ nhắm mắt lại, đắp chăn thật ấm, ôm túi chườm và nghĩ về những ngày vui vẻ phía trước của chúng mình.
+            </p>
+            <p>
+              Cơn đau này chỉ là thử thách nhỏ xíu thôi, nó sẽ biến mất thật nhanh trước tình yêu to bự của anh dành cho em. 
+              Uống thêm chút trà ấm, ngủ một giấc thật ngoan nhen bé iu.
+            </p>
+            <p class="letter-highlight">
+              Anh thương Tú Oanh nhất trên đời! Mau khỏe lại với anh nha em bé! 🌸
+            </p>
+          </div>
+
+          <div class="letter-signature">
+            <span>Mãi yêu và chăm sóc em,</span>
+            <strong class="signature-name">Người Yêu Của Tú Oanh 💖</strong>
+            <small class="signature-date">Hôm nay &amp; Mãi mãi về sau</small>
+          </div>
+
+          <div class="wax-seal">
+            <span>❤️</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PRINTABLE / PDF KEEPSAKE VIEW (Used for clean PDF printing) -->
+  <div class="print-only-container" id="printContainer">
+    <div class="print-page">
+      <div class="print-border">
+        <!-- 1. Header -->
+        <div class="print-header">
+          <span class="print-sub">🌸 MÓN QUÀ SỨC KHỎE &amp; TÌNH YÊU ĐẶC BIỆT DÀNH TẶNG 🌸</span>
+          <h1 class="print-title">Em Bé Tú Oanh Mau Khỏe Nhé! 💕</h1>
+          <p class="print-date">Xua tan đau bụng · Luôn rạng rỡ nụ cười · Mãi mãi bên em</p>
+        </div>
+
+        <!-- 2. Dual Artwork Collage -->
+        <div class="print-art-grid">
+          <div class="print-art-item">
+            <div class="print-img-wrap">
+              <img src="assets/hero.jpg" alt="Tú Oanh nghỉ ngơi" class="print-img">
+            </div>
+            <p>🧸 Bé Oanh ngủ ngoan dưới chăn ấm dịu dàng</p>
+          </div>
+          <div class="print-art-item">
+            <div class="print-img-wrap">
+              <img src="assets/hug.jpg" alt="Vòng tay ấm áp của anh" class="print-img">
+            </div>
+            <p>🫂 Anh luôn ở đây ôm và xoa bụng cho em</p>
+          </div>
+        </div>
+
+        <!-- 3. Love Prescription -->
+        <div class="print-rx-box">
+          <div class="print-rx-title-row">
+            <span class="print-rx-icon">🩺</span>
+            <h3>Đơn Thuốc Tình Yêu Đặc Trị Đau Bụng Cho Tú Oanh</h3>
+          </div>
+          <div class="print-rx-grid">
+            <div class="print-rx-cell">
+              <span class="rx-num">Liều 01</span>
+              <div>
+                <strong>Trà Gừng Mật Ong 39°C</strong>
+                <p>Uống từng ngụm ấm, làm dịu và giãn cơ dạ dày</p>
+              </div>
+            </div>
+            <div class="print-rx-cell">
+              <span class="rx-num">Liều 02</span>
+              <div>
+                <strong>Túi Chườm Ấm Gấu Bông</strong>
+                <p>Áp nhẹ lên vùng bụng dưới 15-20 phút</p>
+              </div>
+            </div>
+            <div class="print-rx-cell">
+              <span class="rx-num">Liều 03</span>
+              <div>
+                <strong>1000 Cái Ôm &amp; Xoa Lưng</strong>
+                <p>Xoa bụng tròn theo chiều kim đồng hồ dỗ dành</p>
+              </div>
+            </div>
+            <div class="print-rx-cell">
+              <span class="rx-num">Liều 04</span>
+              <div>
+                <strong>Giấc Ngủ Say Bình Yên</strong>
+                <p>Đắp chăn ấm ngủ sâu, không lo toan bất cứ điều gì</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. VIP Care Vouchers Strip -->
+        <div class="print-voucher-box">
+          <h4>🎟️ ĐẶC QUYỀN CHĂM SÓC VIP (CÓ GIÁ TRỊ TRỌN ĐỜI)</h4>
+          <div class="print-voucher-tags">
+            <span class="print-vtag">🍲 Nấu cháo sườn sen bồi dưỡng</span>
+            <span class="print-vtag">💆‍♀️ Massage xoa lưng ru ngủ</span>
+            <span class="print-vtag">👑 Một ngày làm công chúa</span>
+            <span class="print-vtag">🛵 Đèo đi hóng gió ngắm hoàng hôn</span>
+          </div>
+        </div>
+
+        <!-- 5. Heartfelt Note, Signature & QR Code -->
+        <div class="print-bottom-row">
+          <div class="print-letter-box">
+            <p>
+              <em>"Thương em bé Tú Oanh nhiều lắm! Cơn đau bụng này sẽ sớm tan biến trước tình yêu to bự của anh. 
+              Hãy ngoan ngoãn nghỉ ngơi, uống ngụm trà ấm và ngủ một giấc thật ngon nhen em bé iu của anh!"</em>
+            </p>
+            <div class="print-sign">
+              <span>Người yêu thương em nhất trần đời,</span>
+              <strong>Anh Của Tú Oanh 💖</strong>
+            </div>
+          </div>
+          <div class="print-qr-box">
+            <img src="assets/qr-code.png" alt="Mã QR mở web tình yêu Tú Oanh" class="print-qr-img">
+            <div class="print-qr-text">
+              <strong>📱 Quét Mã QR</strong>
+              <small>Mở web nghe nhạc &amp; nhận ôm</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Print Footer Note -->
+        <div class="print-footer-note">
+          <span>Tác phẩm được thiết kế độc quyền gửi tặng Tú Oanh · Mãi mãi yêu và chăm sóc em 🌸</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>Made with all my heart for <strong>Tú Oanh</strong> · Em Bé Đáng Yêu Nhất Thế Giới 🌸</p>
+      <div class="footer-small">
+        <span>Chúc em mau hết đau bụng và luôn ngập tràn niềm vui!</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Messages / Actions -->
+  <div class="modal-overlay" id="alertModal">
+    <div class="modal-card glass-panel">
+      <div class="modal-icon" id="modalIcon">💖</div>
+      <h3 class="modal-title" id="modalTitle">Gửi Yêu Thương</h3>
+      <p class="modal-msg" id="modalMsg">Nội dung thông điệp</p>
+      <button class="btn-primary" id="modalCloseBtn">Dạ, Oanh cảm ơn anh ạ! 🥰</button>
+    </div>
+  </div>
+
+  <!-- Modal for QR Code & Public URL -->
+  <div class="modal-overlay" id="qrModal">
+    <div class="modal-card glass-panel qr-modal-card">
+      <div class="modal-icon">📱</div>
+      <h3 class="modal-title">Quét Mã Để Mở Web Cho Tú Oanh</h3>
+      <p class="modal-msg">Em bé Tú Oanh bật camera điện thoại quét mã này để vào web tình yêu bất cứ lúc nào nhé:</p>
+      
+      <div class="qr-code-display-wrap">
+        <img src="assets/qr-code.png" alt="Mã QR Public URL" class="qr-modal-image">
+        <span class="qr-scan-badge">✨ Quét là mở ngay</span>
+      </div>
+
+      <div class="qr-url-copy-row">
+        <input type="text" readonly value="https://solutions-nor-above-cam.trycloudflare.com" id="qrUrlInput" class="qr-url-input">
+        <button id="copyQrUrlBtn" class="btn-primary btn-copy-action">
+          <span>📋</span>
+          <span id="copyBtnLabel">Sao Chép</span>
+        </button>
+      </div>
+
+      <button class="btn-secondary" id="qrModalCloseBtn" style="margin-top: 18px; width: 100%;">Đóng Cửa Sổ</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
